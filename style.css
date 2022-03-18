@@ -1,0 +1,107 @@
+/* 
+- Mobile: 375px
+- Desktop: 1440px */
+
+body {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+.title {
+  position: absolute;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 1.75rem;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  height: 250px;
+}
+
+input {
+  font-size: 1.125rem;
+  font-weight: lighter;
+  border: none;
+  padding: 1em;
+  width: 35%;
+  border-radius: 10px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 20px;
+  outline: none;
+}
+
+input:hover,
+.search-btn {
+  cursor: pointer;
+}
+
+.search-btn {
+  padding: 1.5em;
+  width: 5em;
+  background-color: black;
+  border: none;
+  position: absolute;
+  top: 40%;
+  left: 66.8%;
+  transform: translate(-50%, -50%);
+  border-radius: 0px 10px 10px 0;
+}
+
+/* this will be the image of the map */
+.img {
+  position: relative;
+  height: 539px;
+  background-color: grey;
+}
+
+.container-info {
+  width: 80%;
+  padding: 1.5em;
+  position: absolute;
+  display: flex;
+  top: 32%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: white;
+  justify-content: space-around;
+}
+
+.info-items h6 {
+  color: hsl(0, 0%, 59%);
+  font-size: 1rem;
+}
+
+.info-items h3 {
+  color: hsl(0, 3%, 31%);
+  font-size: 1.5rem;
+}
+
+.info-items {
+  text-align: start;
+}
+
+.solid {
+  margin: 0;
+  border-left: 2px solid #bbb;
+  border-radius: 10px;
+  height: 5em;
+}
+
+h6 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  margin-top: 0.6em;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Adress Tracker</title>
+  <!-- font family -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon-32x32.png">
+  <!-- styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <head>
+    <div class="container">
+      <img class="background-img" src="/images/pattern-bg.png" alt="image">
+      <h1 class="title">IP Adress Tracker</h1>
+      <!-- add a search bar with a search button -->
+      <div class="search-wrapper">
+        <input autocomplete="off" placeholder="Search for any IP adress or domain" type"search" id="search">
+        <button class="search-btn">
+          <!-- arrow icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </head>
+  <!-- <template class="map-image"> -->
+  <div class="img"></div>
+  <!-- </template> -->
+
+  <!-- the div with info from api -->
+  <div class="container-info">
+    <div class="info-items"id="ip-adress">
+      <h6>IP ADRESS</h6>
+      <h3>143.123.532.153</h3>
+    </div>
+    <hr class="solid">
+    <div class="info-items"id="location">
+      <h6>LOCATION</h6>
+      <h3>Brooklyn, NY<br>10001</h3>
+    </div>
+    <hr class="solid">
+    <div class="info-items"id="timezone">
+      <h6>TIMEZONE</h6>
+      <h3>UTC- 05:00</h3>
+    </div>
+    <hr class="solid">
+    <div class="info-items"id="isp">
+      <h6>ISP</h6>
+      <h3>SpaceX<br>Starlink</h3>
+    </div>
+  </div>
+
+  <!-- javascript -->
+  <script src="app.js"></script>
+</body>
+</html>
+
+<!-- use template tags to hide things on html but be able to use it in javascript -->
