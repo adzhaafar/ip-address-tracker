@@ -68,7 +68,7 @@ input:hover,
   padding: 1.5em;
   position: absolute;
   display: flex;
-  top: 32%;
+  top: 31%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
@@ -77,17 +77,19 @@ input:hover,
 }
 
 .info-items h6 {
-  color: hsl(0, 0%, 59%);
+  color: rgb(150, 150, 150);
   font-size: 1rem;
 }
 
 .info-items h3 {
   color: hsl(0, 3%, 31%);
   font-size: 1.5rem;
+  font-weight: 525;
 }
 
 .info-items {
-  text-align: start;
+  text-align: flex-start;
+  margin-right: 3.75em;
 }
 
 .solid {
@@ -104,4 +106,17 @@ h6 {
 h3 {
   margin: 0;
   margin-top: 0.6em;
+}
+
+@media (max-width: 1000px) {
+  .container-info {
+    flex-direction: column;
+    top: 60%;
+  }
+  .solid {
+    display: none;
+  }
+  .info-items {
+    margin-right: 0;
+  }
 }
