@@ -11,52 +11,62 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon-32x32.png">
   <!-- styling -->
   <link rel="stylesheet" href="style.css">
+  <!-- leaflet library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
 </head>
 <body>
-  <head>
+  <div>
     <div class="container">
       <img class="background-img" src="/images/pattern-bg.png" alt="image">
       <h1 class="title">IP Adress Tracker</h1>
       <!-- add a search bar with a search button -->
       <div class="search-wrapper">
-        <input autocomplete="off" placeholder="Search for any IP adress or domain" type"search" id="search">
+        <!-- <label for="search" class="show-for-large">Search for any IP address or domain</label>
+        <label for="searcg" class="show-for-small" hidden>Search IP</label> -->
+        <input type="text" autocomplete="off" placeholder="Search for any IP adress or domain" type"search" id="search">
         <button class="search-btn">
           <!-- arrow icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>
         </button>
       </div>
     </div>
-  </head>
-  <!-- <template class="map-image"> -->
-  <div class="img"></div>
-  <!-- </template> -->
-
+  </div>
+  <!-- map div element -->
+  <div id="map"></div>
   <!-- the div with info from api -->
   <div class="container-info">
     <div class="info-items"id="ip-adress">
       <h6>IP ADRESS</h6>
-      <h3>143.123.532.153</h3>
+      <h3 class="ip">143.123.532.153</h3>
     </div>
     <hr class="solid">
     <div class="info-items"id="location">
       <h6>LOCATION</h6>
-      <h3>Brooklyn, NY<br>10001</h3>
+      <h3 class="place">Brooklyn, NY<br>10001</h3>
     </div>
     <hr class="solid">
     <div class="info-items"id="timezone">
       <h6>TIMEZONE</h6>
-      <h3>UTC- 05:00</h3>
+      <h3 class="time">UTC- 05:00</h3>
     </div>
     <hr class="solid">
     <div class="info-items"id="isp">
       <h6>ISP</h6>
-      <h3>SpaceX<br>Starlink</h3>
+      <h3 class="internet">SpaceX<br>Starlink</h3>
     </div>
   </div>
 
   <!-- javascript -->
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
+
+  <!-- leaflet javascript -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 </body>
 </html>
 
-<!-- use template tags to hide things on html but be able to use it in javascript -->
+<!-- use template tags to hide things on html but be able to use it in javascript
+-->
