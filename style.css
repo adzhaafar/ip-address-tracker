@@ -138,6 +138,18 @@ h3 {
   }
 }
 
+@media (max-height: 750px) {
+  .container-info {
+    top: 60%;
+  }
+}
+
+@media (max-height: 590) {
+  .container-info {
+    padding: 0.5em;
+  }
+}
+
 .container-info {
   z-index: 2;
   text-align: center;
