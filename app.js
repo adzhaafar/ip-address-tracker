@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).addTo(map);
         //add a marker on that location with a custom icon
         const locationIcon = L.icon({
-            iconUrl: 'icon-location.png', 
+            iconUrl: 'assets/icon-location.png', 
 
         });
         const marker = L.marker([latitude, longtitude], { icon: locationIcon }).addTo(map);
