@@ -2,7 +2,7 @@
 
 # Frontend Mentor - IP address tracker solution
 
-This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0).
 
 ## Table of contents
 
@@ -13,14 +13,11 @@ This is a solution to the [IP address tracker challenge on Frontend Mentor](http
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
+
+This is a project that allows users to search any valid ip adress or domain to get some information about their current place. This will give user the location, the timezone and the internet service provider associated with the ip adress/domain they looked up. There is also a map on the bottom of the page that will bring the icon to the exact location of the user and above the icon there is some information about the place (the city, latitude and longtitude).
 
 ### The challenge
 
@@ -33,89 +30,157 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Image of finished page](https://github.com/[adzhaafar]/[ip-address-tracker]/blob/[main]/screenshot%20ip%20address%20tracker.png?raw=true)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![image of finished page](ip-adress-tracker/screenshot%20ip%20address%20tracker.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://adzhaafar.github.io/ip-adress-tracker/] (GitHub pages)
+- Live Site URL: [http://127.0.0.1:5500/ip-adress-tracker/index.html] (live server)
 
 ## My process
 
+- Build the basic layout of the page
+
+  - Place background-image, title and search bar
+  - Create the information div and hardcode the values
+
+- Make the search bar functional
+
+  - Use fetch() for the IP Geolocation API (only with ip adress for now)
+
+- Put the map on the page using the leaflet api ([LeafletJS](https://leafletjs.com/))
+
+  - Initialize the map
+  - Put tile from Open Street Maps
+  - Add a marker and change its icon
+  - Use the information from the ip geolocation api (latitide and longtitude) and set the icon on that location
+
+- Create a functionality for the return button on keyboard
+- Make it so users can search up domain names to get information
+- Make page more responsive (media-queries)
+- Create a popup with information (city, latitide/longtitude)
+- Change placeholder of the input button through js when resizing the window (so the placeholder text is shorter)
+
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Basic HTML5 markup
+- CSS
+- JavaScript
+- Leaflet library
+- IP Geolocation API by IPify
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+JavaScript:
 
-To see how you can add code snippets, see below:
+- Basics of regular expressions
+- Keydown events, keycodes for different buttons
+- Import variables from external files
+- setAttribute() and getAttribute()
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+APIs:
+
+- What are api keys & how to use them
+- How to use variables in the url of an api call
+- Basics of Leaflet library
+
+CSS:
+
+- CSS positioning
+- Working with responsive units (ems and rems)
+- Using z-indices
+- Responsive desing using flexbox and flex-direction
+- Using justify-content, text-align
+- Using media-queries
 
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+/* media query for max width of 1000px */
+@media (max-width: 1000px) {
+  .container-info {
+    flex-direction: column;
+    top: 45%;
+  }
+  .solid {
+    display: none;
+  }
+  .info-items {
+    margin-right: 0;
+    margin-bottom: 2em;
+    justify-content: center;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
 }
 ```
 
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+//function that calls the fetch api depending on the input and type
+function fetchData(input, type) {
+  fetch(
+    `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}${type}${input}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      ip.textContent = data.ip;
+      place.textContent = data.location.region;
+      time.textContent = data.location.timezone;
+      internet.textContent = data.isp;
+      getMap(
+        data.location.lat,
+        data.location.lng,
+        data.location.city,
+        data.location.country
+      );
+    });
+}
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+```js
+// function to get map location based on lat & long
+function getMap(latitude, longtitude, city, country) {
+  //check if map is already initialized, if yes set it to null
+  var container = L.DomUtil.get("map");
+  if (container != null) {
+    container._leaflet_id = null;
+  }
+  //initialize map lat and long of user
+  var map = L.map("map", {
+    center: [latitude, longtitude],
+    zoom: 15,
+  });
+  //add a tile layer to map
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+  //add a marker on that location with a custom icon
+  const locationIcon = L.icon({
+    iconUrl: "icon-location.png",
+  });
+  const marker = L.marker([latitude, longtitude], { icon: locationIcon }).addTo(
+    map
+  );
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+  var latlng = L.latLng(latitude, longtitude);
+  //add a popup on the map with extra information
+  var popup = L.popup()
+    .setLatLng(latlng)
+    .setContent(
+      `<p>City: ${city} (${country})<br />Latitude: ${latitude} <br/> Longtitude: ${longtitude}</p>`
+    )
+    .openOn(map);
+}
+```
 
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+```js
+// Regular expression to check if string is a IP address
+const regexExp =
+  /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
+```
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
-
-write your own readme file
-host the project in github pages
-look at the code if there is something to refactor for the final commit
+There are a lot of very useful resources I used but honestly I forgot to keep track of them, I will definitely do so for the next project
