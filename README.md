@@ -29,10 +29,12 @@ Users should be able to:
 - Search for any IP addresses or domains and see the key information and location
 
 ### Screenshot
-
+<!-- 
 ![Image of finished page](https://github.com/[adzhaafar]/[ip-address-tracker]/blob/[main]/screenshot%20ip%20address%20tracker.png?raw=true)
 
-![image of finished page](ip-adress-tracker/screenshot%20ip%20address%20tracker.png)
+![image of finished page](ip-adress-tracker/screenshot%20ip%20address%20tracker.png) -->
+
+![image](https://github.com/adzhaafar/ip-address-tracker/blob/main/ip-pic.png)
 
 ### Links
 
