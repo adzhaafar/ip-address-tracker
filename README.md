@@ -34,11 +34,12 @@ Users should be able to:
 
 ![image of finished page](ip-adress-tracker/screenshot%20ip%20address%20tracker.png) -->
 
-![image](https://github.com/adzhaafar/ip-address-tracker/blob/main/ip-pic.png)
+![image](https://github.com/adzhaafar/ip-address-tracker/blob/main/assets/ip-pic.png)
 
 ### Links
 
-- Solution URL: [https://adzhaafar.github.io/ip-adress-tracker/] (GitHub pages)
+- Solution URL: [https://adzhaafar.github.io/ip-address-tracker/] (GitHub pages) 
+- The github pages site doesn't load javascript (because the api key is not on the github's server)
 - Live Site URL: [http://127.0.0.1:5500/ip-adress-tracker/index.html] (live server)
 
 ## My process
@@ -160,7 +161,7 @@ function getMap(latitude, longtitude, city, country) {
   }).addTo(map);
   //add a marker on that location with a custom icon
   const locationIcon = L.icon({
-    iconUrl: "icon-location.png",
+    iconUrl: "assets/icon-location.png",
   });
   const marker = L.marker([latitude, longtitude], { icon: locationIcon }).addTo(
     map
