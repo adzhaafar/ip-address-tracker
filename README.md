@@ -39,8 +39,6 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://adzhaafar.github.io/ip-address-tracker/] (GitHub pages) 
-- The github pages site doesn't load javascript (because the api key is not on the github's server)
-- Live Site URL: [http://127.0.0.1:5500/ip-adress-tracker/index.html] (live server)
 
 ## My process
 
